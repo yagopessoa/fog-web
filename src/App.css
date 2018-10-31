@@ -8,14 +8,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  /* background: url('https://ednene.files.wordpress.com/2013/03/games-of-2013-wallpaper-by-sakis25.jpg');
+  background-size: cover;
+  background-position: center; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+  max-height: 720px;
 }
 
 .App-link {
