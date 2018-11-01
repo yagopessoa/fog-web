@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import 'typeface-roboto'
 import './App.css'
 
+import MediaQuery from 'react-responsive'
+
 import theme from './theme'
-import { MuiThemeProvider, Typography } from '@material-ui/core'
+import { MuiThemeProvider, Typography, IconButton } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 
+import Menu from '@material-ui/icons/Menu'
 import Games from '@material-ui/icons/Games'
 import GroupAdd from '@material-ui/icons/GroupAdd'
 import Radio from '@material-ui/icons/Radio'
@@ -36,18 +39,13 @@ const styles = {
   icon: {
     marginRight: 8,
   },
-  center: {
-    flexGrow: 1,
-    display: 'flex',
-    alignItems: 'center',
-  },
   image: {
     height: '70%',
     padding: 16,
   },
-  nameLogo: {
-    display: 'flex',
-    alignItems: 'center',
+  image2: {
+    width: '70%',
+    padding: 16,
   },
   titles: {
     display: 'flex',
@@ -57,7 +55,7 @@ const styles = {
     paddingTop: 32,
   },
   button: {
-    marginTop: 48,
+    marginTop: 32,
   },
   appBarButton: {
     marginLeft: 16,
@@ -74,34 +72,61 @@ class App extends Component {
             <div style={styles.root}>
               <AppBar color="primary" position="static">
                 <Toolbar style={styles.toolbar}>
-                  <div>
-                    <Button style={styles.appBarButton} color="inherit">
-                      <Info style={styles.icon} />
-                      Sobre
-                    </Button>
-                    <Button style={styles.appBarButton} color="inherit">
-                      <Games style={styles.icon} />
-                      Nossos jogos
-                    </Button>
-                    <Button style={styles.appBarButton} color="inherit">
-                      <Radio style={styles.icon} />
-                      Podcast
-                    </Button>
-                    <Button style={styles.appBarButton} color="inherit">
-                      <GroupAdd style={styles.icon} />
-                      Processo Seletivo
-                    </Button>
-                  </div>
+                  
+                  <MediaQuery minWidth={980}>
+                    <div>
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Info style={styles.icon} />
+                        Sobre
+                      </Button>
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Games style={styles.icon} />
+                        Nossos jogos
+                      </Button>
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Radio style={styles.icon} />
+                        Podcast
+                      </Button>
+                      <Button style={styles.appBarButton} color="inherit">
+                        <GroupAdd style={styles.icon} />
+                        Processo Seletivo
+                      </Button>
+                    </div>
+                  </MediaQuery>
+                  <MediaQuery maxWidth={979}>
+                    <IconButton color="inherit">
+                      <Menu />
+                    </IconButton>
+                  </MediaQuery>
+
                 </Toolbar>
               </AppBar>
             </div>
 
-            <div style={styles.center}>
-              <div style={styles.nameLogo}>
-                <img style={styles.image} src={require('./Images/brasao.png')} alt="Brasão" />
+            <div className="page-body">
+              <div className="name-n-logo">
+                <MediaQuery minWidth={600}>
+                  <img style={styles.image} src={require('./Images/brasao.png')} alt="Brasão" />
+                </MediaQuery>
+                <MediaQuery maxWidth={599}>
+                  <img style={styles.image2} src={require('./Images/brasao.png')} alt="Brasão" />
+                </MediaQuery>
+                
                 <div style={styles.titles}>
-                  <Typography style={{fontSize: '4em'}} variant="h1" gutterBottom>Fellowship of the Game</Typography>
-                  <Typography style={{fontSize: '1.4em'}} variant="h4" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                  
+                  <MediaQuery minWidth={1600}>
+                    <Typography style={{fontSize: '4em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                    <Typography style={{fontSize: '1.4em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                  </MediaQuery>
+                  <MediaQuery minWidth={1280} maxWidth={1599}>
+                    <Typography style={{fontSize: '3em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                    <Typography style={{fontSize: '1.05em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                  </MediaQuery>
+                  <MediaQuery maxWidth={1279}>
+                    <Typography style={{fontSize: '2em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                    <Typography style={{fontSize: '0.7em'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                  </MediaQuery>
+
                   <Button style={styles.button} variant="contained" color="secondary" size="large" >
                     Saiba mais
                   </Button>
