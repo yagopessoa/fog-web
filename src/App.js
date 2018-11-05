@@ -16,12 +16,18 @@ import GroupAdd from '@material-ui/icons/GroupAdd'
 import Radio from '@material-ui/icons/Radio'
 import Info from '@material-ui/icons/Info'
 
-/* import {
+import Jogos from './Pages/Jogos'
+import Sobre from './Pages/Sobre'
+import Ptdc from './Pages/Ptdc'
+import Psel from './Pages/Psel'
+
+import allGames from './allGames'
+
+import {
   BrowserRouter as Router,
   Route,
-  Redirect,
   Switch,
-} from 'react-router-dom' */
+} from 'react-router-dom'
 
 const styles = {
   root: {
@@ -62,81 +68,106 @@ const styles = {
   }
 }
 
+const Home = () => 
+<MuiThemeProvider theme={theme}>
+  <div className="App">
+    <header className="App-header">
+      <div className="page-body">
+          <div className="name-n-logo">
+            <MediaQuery minWidth={600}>
+              <img style={styles.image} src={require('./Images/brasao.png')} alt="Brasão" />
+            </MediaQuery>
+            <MediaQuery maxWidth={599}>
+              <img style={styles.image2} src={require('./Images/brasao.png')} alt="Brasão" />
+            </MediaQuery>
+            
+            <div style={styles.titles}>
+              <MediaQuery minWidth={1600}>
+                <Typography style={{fontSize: '4em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1.4em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+              </MediaQuery>
+              <MediaQuery minWidth={1280} maxWidth={1599}>
+                <Typography style={{fontSize: '3em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+              </MediaQuery>
+              <MediaQuery maxWidth={1279}>
+                <Typography style={{fontSize: '2em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1em'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+              </MediaQuery>
+
+              <Button onClick={() => window.location.href="/sobre"} style={styles.button} variant="contained" color="secondary" size="large" >
+                Saiba mais
+              </Button>
+            </div>
+          </div>
+
+      </div>
+    </header>
+  </div>
+</MuiThemeProvider>
+
 class App extends Component {
+
+  componentWillMount(){
+
+    console.log('allgames: ', allGames.games)
+    
+    /*      investigate issue
+    fetch('https://itch.io/api/1/'+process.env.REACT_APP_API_KEY+'/my-games')
+    .then(response => response.json())
+    .then(parsedJSON => {
+        console.log(parsedJSON)
+    }).catch(err => console.log(err))
+     */
+  }
+
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div className="App">
-          <header className="App-header">
-
-            <div style={styles.root}>
-              <AppBar color="primary" position="static">
-                <Toolbar style={styles.toolbar}>
-                  
-                  <MediaQuery minWidth={980}>
-                    <div>
-                      <Button style={styles.appBarButton} color="inherit">
-                        <Info style={styles.icon} />
-                        Sobre
-                      </Button>
-                      <Button style={styles.appBarButton} color="inherit">
-                        <Games style={styles.icon} />
-                        Nossos jogos
-                      </Button>
-                      <Button style={styles.appBarButton} color="inherit">
-                        <Radio style={styles.icon} />
-                        Podcast
-                      </Button>
-                      <Button style={styles.appBarButton} color="inherit">
-                        <GroupAdd style={styles.icon} />
-                        Processo Seletivo
-                      </Button>
-                    </div>
-                  </MediaQuery>
-                  <MediaQuery maxWidth={979}>
-                    <IconButton color="inherit">
-                      <Menu />
-                    </IconButton>
-                  </MediaQuery>
-
-                </Toolbar>
-              </AppBar>
-            </div>
-
-            <div className="page-body">
-              <div className="name-n-logo">
-                <MediaQuery minWidth={600}>
-                  <img style={styles.image} src={require('./Images/brasao.png')} alt="Brasão" />
+      <Router>
+        <div><MuiThemeProvider theme={theme}>
+          <div style={styles.root}>
+            <AppBar color="primary" position="static">
+              <Toolbar style={styles.toolbar}>
+                <MediaQuery minWidth={980}>
+                  <div>
+                    <Button onClick={() => window.location.href="/sobre"} style={styles.appBarButton} color="inherit">
+                      <Info style={styles.icon} />
+                      Sobre
+                    </Button>
+                    <Button onClick={() => window.location.href="/jogos"} style={styles.appBarButton} color="inherit">
+                      <Games style={styles.icon} />
+                      Jogos
+                    </Button>
+                    <Button onClick={() => window.location.href="/ptdc"} style={styles.appBarButton} color="inherit">
+                      <Radio style={styles.icon} />
+                      PTDC
+                    </Button>
+                    <Button onClick={() => window.location.href="/psel"} style={styles.appBarButton} color="inherit">
+                      <GroupAdd style={styles.icon} />
+                      Processo Seletivo
+                    </Button>
+                  </div>
                 </MediaQuery>
-                <MediaQuery maxWidth={599}>
-                  <img style={styles.image2} src={require('./Images/brasao.png')} alt="Brasão" />
+                <MediaQuery maxWidth={979}>
+                  <IconButton color="inherit">
+                    <Menu />
+                  </IconButton>
                 </MediaQuery>
-                
-                <div style={styles.titles}>
-                  
-                  <MediaQuery minWidth={1600}>
-                    <Typography style={{fontSize: '4em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                    <Typography style={{fontSize: '1.4em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
-                  </MediaQuery>
-                  <MediaQuery minWidth={1280} maxWidth={1599}>
-                    <Typography style={{fontSize: '3em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                    <Typography style={{fontSize: '1.05em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
-                  </MediaQuery>
-                  <MediaQuery maxWidth={1279}>
-                    <Typography style={{fontSize: '2em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                    <Typography style={{fontSize: '0.7em'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
-                  </MediaQuery>
 
-                  <Button style={styles.button} variant="contained" color="secondary" size="large" >
-                    Saiba mais
-                  </Button>
-                </div>
-              </div>
-            </div>
+              </Toolbar>
+            </AppBar>
+          </div>
 
-          </header>
-        </div>
-      </MuiThemeProvider>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/sobre" component={Sobre} />
+            <Route path="/jogos/" component={Jogos} />
+            <Route path="/ptdc/" component={Ptdc} />
+            <Route path="/psel/" component={Psel} />
+          </Switch>
+
+        </MuiThemeProvider></div>
+      </Router>
     )
   }
 }
