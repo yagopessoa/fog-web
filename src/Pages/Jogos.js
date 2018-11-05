@@ -77,17 +77,17 @@ export default class Jogos extends Component {
         return(     // TODO: https://github.com/Canner/react-loading-image
             <div style={styles.root}>
                 <MediaQuery minWidth={1120}>
-                    <GridList cellHeight={320} cols={3} style={styles.gridList}>
+                    <GridList cellHeight={340} cols={3} style={styles.gridList}>
                         {this.renderTile()}
                     </GridList>
                 </MediaQuery>
                 <MediaQuery minWidth={560} maxWidth={1119}>
-                    <GridList cellHeight={320} cols={2} style={styles.gridList}>
+                    <GridList cellHeight={280} cols={2} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>
                 <MediaQuery maxWidth={559}>
-                    <GridList cellHeight={320} cols={1} style={styles.gridList}>
+                    <GridList cellHeight={220} cols={1} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>

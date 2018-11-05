@@ -27,6 +27,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Link,
 } from 'react-router-dom'
 
 const styles = {
@@ -65,6 +66,10 @@ const styles = {
   },
   appBarButton: {
     marginLeft: 16,
+  },
+  link: {
+    textDecoration: 'none', 
+    color: '#FFF',
   }
 }
 
@@ -112,13 +117,13 @@ class App extends Component {
 
     console.log('allgames: ', allGames.games)
     
-    /*      investigate issue
-    fetch('https://itch.io/api/1/'+process.env.REACT_APP_API_KEY+'/my-games')
+        //  investigate issue
+    /* fetch('https://itch.io/api/1/'+process.env.REACT_APP_API_KEY+'/my-games')
     .then(response => response.json())
     .then(parsedJSON => {
         console.log(parsedJSON)
-    }).catch(err => console.log(err))
-     */
+    }).catch(err => console.log(err)) */
+    
   }
 
   render() {
@@ -129,26 +134,48 @@ class App extends Component {
             <AppBar color="primary" position="static">
               <Toolbar style={styles.toolbar}>
                 <MediaQuery minWidth={980}>
+                  <div style={{flexGrow: 1}}>
+                    <Typography style={{marginLeft: 32}} color="inherit" variant="title">
+                      <Link style={styles.link} to="/">
+                        Fellowship of the Game
+                      </Link>
+                    </Typography>
+                  </div>
                   <div>
-                    <Button onClick={() => window.location.href="/sobre"} style={styles.appBarButton} color="inherit">
-                      <Info style={styles.icon} />
-                      Sobre
-                    </Button>
-                    <Button onClick={() => window.location.href="/jogos"} style={styles.appBarButton} color="inherit">
-                      <Games style={styles.icon} />
-                      Jogos
-                    </Button>
-                    <Button onClick={() => window.location.href="/ptdc"} style={styles.appBarButton} color="inherit">
-                      <Radio style={styles.icon} />
-                      PTDC
-                    </Button>
-                    <Button onClick={() => window.location.href="/psel"} style={styles.appBarButton} color="inherit">
-                      <GroupAdd style={styles.icon} />
-                      Processo Seletivo
-                    </Button>
+                    <Link style={styles.link} to="/sobre">
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Info style={styles.icon} />
+                        Sobre
+                      </Button>
+                    </Link>
+                    <Link style={styles.link} to="/jogos">
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Games style={styles.icon} />
+                        Jogos
+                      </Button>
+                    </Link>
+                    <Link style={styles.link} to="/ptdc">
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Radio style={styles.icon} />
+                        PTDC
+                      </Button>
+                    </Link>
+                    <Link style={styles.link} to="/psel">
+                      <Button style={styles.appBarButton} color="inherit">
+                        <GroupAdd style={styles.icon} />
+                        Processo Seletivo
+                      </Button>
+                    </Link>
                   </div>
                 </MediaQuery>
                 <MediaQuery maxWidth={979}>
+                  <div style={{flexGrow: 1}}>
+                    <Typography color="inherit" variant="title">
+                      <Link style={styles.link} to="/">
+                        Fellowship of the Game
+                      </Link>
+                    </Typography>
+                  </div>
                   <IconButton color="inherit">
                     <Menu />
                   </IconButton>
@@ -172,4 +199,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
