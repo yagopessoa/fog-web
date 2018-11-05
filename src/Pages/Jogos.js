@@ -15,6 +15,10 @@ const styles = {
         justifyContent: 'space-around',
         overflow: 'hidden', // overlay -> para celular
         //backgroundColor: theme.palette.background.paper,
+        //backgroundColor: '#F5F5F5',
+        shadowColor: '#000',
+        shadowOffset: {width: 5, height: 5},
+        shadowOpacity: 0.8,
     },
     gridList: {
         width: '100hh',

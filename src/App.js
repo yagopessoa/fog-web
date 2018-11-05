@@ -15,9 +15,11 @@ import Games from '@material-ui/icons/Games'
 import GroupAdd from '@material-ui/icons/GroupAdd'
 import Radio from '@material-ui/icons/Radio'
 import Info from '@material-ui/icons/Info'
+import Event from '@material-ui/icons/Event'
 
-import Jogos from './Pages/Jogos'
 import Sobre from './Pages/Sobre'
+import Jogos from './Pages/Jogos'
+import Eventos from './Pages/Eventos'
 import Ptdc from './Pages/Ptdc'
 import Psel from './Pages/Psel'
 
@@ -100,9 +102,11 @@ const Home = () =>
                 <Typography style={{fontSize: '1em'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
               </MediaQuery>
 
-              <Button onClick={() => window.location.href="/sobre"} style={styles.button} variant="contained" color="secondary" size="large" >
-                Saiba mais
-              </Button>
+              <Link style={styles.link} to="/sobre">
+                <Button style={styles.button} variant="contained" color="secondary" size="large" >
+                  Saiba mais
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -133,7 +137,7 @@ class App extends Component {
           <div style={styles.root}>
             <AppBar color="primary" position="static">
               <Toolbar style={styles.toolbar}>
-                <MediaQuery minWidth={980}>
+                <MediaQuery minWidth={1124}>
                   <div style={{flexGrow: 1}}>
                     <Typography style={{marginLeft: 32}} color="inherit" variant="title">
                       <Link style={styles.link} to="/">
@@ -154,6 +158,12 @@ class App extends Component {
                         Jogos
                       </Button>
                     </Link>
+                    <Link style={styles.link} to="/eventos">
+                      <Button style={styles.appBarButton} color="inherit">
+                        <Event style={styles.icon} />
+                        Eventos
+                      </Button>
+                    </Link>
                     <Link style={styles.link} to="/ptdc">
                       <Button style={styles.appBarButton} color="inherit">
                         <Radio style={styles.icon} />
@@ -168,7 +178,7 @@ class App extends Component {
                     </Link>
                   </div>
                 </MediaQuery>
-                <MediaQuery maxWidth={979}>
+                <MediaQuery maxWidth={1123}>
                   <div style={{flexGrow: 1}}>
                     <Typography color="inherit" variant="title">
                       <Link style={styles.link} to="/">
@@ -188,9 +198,10 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/sobre" component={Sobre} />
-            <Route path="/jogos/" component={Jogos} />
-            <Route path="/ptdc/" component={Ptdc} />
-            <Route path="/psel/" component={Psel} />
+            <Route path="/jogos" component={Jogos} />
+            <Route path="/eventos" component={Eventos} />
+            <Route path="/ptdc" component={Ptdc} />
+            <Route path="/psel" component={Psel} />
           </Switch>
 
         </MuiThemeProvider></div>
