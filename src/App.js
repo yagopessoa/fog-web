@@ -23,8 +23,6 @@ import Eventos from './Pages/Eventos'
 import Ptdc from './Pages/Ptdc'
 import Psel from './Pages/Psel'
 
-import allGames from './allGames'
-
 import {
   BrowserRouter as Router,
   Route,
@@ -116,19 +114,6 @@ const Home = () =>
 </MuiThemeProvider>
 
 class App extends Component {
-
-  componentWillMount(){
-
-    console.log('allgames: ', allGames.games)
-    
-        //  investigate issue
-    /* fetch('https://itch.io/api/1/'+process.env.REACT_APP_API_KEY+'/my-games')
-    .then(response => response.json())
-    .then(parsedJSON => {
-        console.log(parsedJSON)
-    }).catch(err => console.log(err)) */
-    
-  }
 
   render() {
     return (

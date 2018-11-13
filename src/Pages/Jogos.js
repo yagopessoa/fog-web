@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
-import Link from '@material-ui/icons/Link'
-import MediaQuery from 'react-responsive'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-import allGames from '../allGames'
+import Link from '@material-ui/icons/Link'
+
+import MediaQuery from 'react-responsive'
 
 const styles = {
     root: {
@@ -14,10 +16,8 @@ const styles = {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden', // overlay -> para celular
-        //backgroundColor: theme.palette.background.paper,
-        //backgroundColor: '#F5F5F5',
         shadowColor: '#000',
-        shadowOffset: {width: 5, height: 5},
+        shadowOffset: { width: 5, height: 5 },
         shadowOpacity: 0.8,
     },
     gridList: {
@@ -36,9 +36,9 @@ export default class Jogos extends Component {
         loading: true,
     }
 
-    renderTile(){ 
+    renderTile() {
         return this.state.tileData.map(tile => (tile.published && tile.cover_url &&
-            <GridListTile style={{padding: 32}} key={tile.title}>
+            <GridListTile style={{ padding: 32 }} key={tile.title}>
                 <img src={tile.cover_url} alt={tile.title} />
                 <GridListTileBar
                     title={tile.title}
@@ -53,9 +53,9 @@ export default class Jogos extends Component {
         ))
     }
 
-    renderTileSmall(){ 
+    renderTileSmall() {
         return this.state.tileData.map(tile => (tile.published && tile.cover_url &&
-            <GridListTile style={{padding: 8}} key={tile.title}>
+            <GridListTile style={{ padding: 8 }} key={tile.title}>
                 <img src={tile.cover_url} alt={tile.title} />
                 <GridListTileBar
                     title={tile.title}
@@ -70,15 +70,34 @@ export default class Jogos extends Component {
         ))
     }
 
-    componentWillMount(){
-        var games = allGames.games
-        games.sort((a, b) => b.views_count - a.views_count)
-        this.setState({ tileData: games, loading: false })
+    componentWillMount() {
+
+        fetch('https://cors-anywhere.herokuapp.com/https://itch.io/api/1/' + process.env.REACT_APP_API_KEY + '/my-games')
+            .then(response => response.json())
+            .then(parsedJSON => {
+                //console.log('API request: ', parsedJSON)
+                var games = parsedJSON.games
+                games.sort((a, b) => b.views_count - a.views_count)
+                this.setState({ tileData: games, loading: false })
+            }).catch(err => {
+                this.setState({ loading: false })
+                console.log(err)
+            })
     }
 
-    render(){
-        if(this.state.loading) return <h4>Loading...</h4>
-        return(     // TODO: https://github.com/Canner/react-loading-image
+    render() {
+        if (this.state.loading) return (
+            <div style={{
+                width: '100vw',
+                height: '90vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                <CircularProgress />
+            </div>
+        )
+        return (     // TODO: https://github.com/Canner/react-loading-image
             <div style={styles.root}>
                 <MediaQuery minWidth={1120}>
                     <GridList cellHeight={340} cols={3} style={styles.gridList}>

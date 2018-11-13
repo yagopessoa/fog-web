@@ -1,3 +1,5 @@
+// FOG ITCH API KEY = f3p8kQSK3qc5Ee01jsPjuYILTD3VBq7ya7D9Pg16
+
 const allGames = {  
     "games":[  
         {  
