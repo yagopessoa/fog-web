@@ -32,7 +32,8 @@ import {
 
 const styles = {
   root: {
-    width: '100%'
+    width: '100%',
+    paddingTop: 64,
   },
   toolbar: {
     flexGrow: 1,
@@ -88,16 +89,16 @@ const Home = () =>
             
             <div style={styles.titles}>
               <MediaQuery minWidth={1600}>
-                <Typography style={{fontSize: '4em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                <Typography style={{fontSize: '1.4em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                <Typography style={{fontSize: '4em', color: '#FFF'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1.4em', color: '#FFF'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
               </MediaQuery>
               <MediaQuery minWidth={1280} maxWidth={1599}>
-                <Typography style={{fontSize: '3em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                <Typography style={{fontSize: '1em'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                <Typography style={{fontSize: '3em', color: '#FFF'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1em', color: '#FFF'}} variant="display1" gutterBottom>Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
               </MediaQuery>
               <MediaQuery maxWidth={1279}>
-                <Typography style={{fontSize: '2em'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
-                <Typography style={{fontSize: '1em'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
+                <Typography style={{fontSize: '2em', color: '#FFF'}} variant="display4" gutterBottom>Fellowship of the Game</Typography>
+                <Typography style={{fontSize: '1em', color: '#FFF'}} variant="display1">Grupo de extensão de desenvolvimento de jogos - ICMC - USP</Typography>
               </MediaQuery>
 
               <Link style={styles.link} to="/sobre">
@@ -120,7 +121,7 @@ class App extends Component {
       <Router>
         <div><MuiThemeProvider theme={theme}>
           <div style={styles.root}>
-            <AppBar color="primary" position="static">
+            <AppBar color="primary" position="fixed">
               <Toolbar style={styles.toolbar}>
                 <MediaQuery minWidth={1124}>
                   <div style={{flexGrow: 1}}>
