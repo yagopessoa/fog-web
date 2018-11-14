@@ -32,7 +32,8 @@ import {
 
 const styles = {
   root: {
-    width: '100%'
+    width: '100vw',
+    paddingTop: 64,
   },
   toolbar: {
     flexGrow: 1,
@@ -120,7 +121,7 @@ class App extends Component {
       <Router>
         <div><MuiThemeProvider theme={theme}>
           <div style={styles.root}>
-            <AppBar color="primary" position="static">
+            <AppBar color="primary" position="fixed">
               <Toolbar style={styles.toolbar}>
                 <MediaQuery minWidth={1124}>
                   <div style={{flexGrow: 1}}>

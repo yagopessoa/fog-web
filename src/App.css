@@ -29,6 +29,24 @@
   align-items: center;
 }
 
+h4 {
+  padding: 8px;
+}
+
+.sobre-page {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.area-container {
+  display: flex;
+  align-items: center;
+  width: 70vw;
+  margin: 32px 0px;
+}
+
 @media screen and (max-width: 980px) {
   .name-n-logo{
     flex-direction: column;
@@ -36,5 +54,11 @@
 
   .page-body{
     align-items: flex-start;
+  }
+
+  .area-container {
+    flex-direction: column;
+    width: 90vw;
+    text-align: center;
   }
 }
