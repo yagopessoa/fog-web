@@ -39,10 +39,6 @@ import {
 } from 'react-router-dom'
 
 const styles = {
-  root: {
-    width: '100vw',
-    paddingTop: 64,
-  },
   toolbar: {
     flexGrow: 1,
     display: 'flex',
@@ -180,7 +176,7 @@ class App extends Component {
     return (
       <Router>
         <div><MuiThemeProvider theme={theme}>
-          <div style={styles.root}>
+          <div className="root-page">
             <AppBar color="primary" position="fixed">
               <Toolbar style={styles.toolbar}>
                 <MediaQuery minWidth={1124}>

@@ -107,13 +107,14 @@ export default class Jogos extends Component {
                         {this.renderTile()}
                     </GridList>
                 </MediaQuery>
-                <MediaQuery minWidth={560} maxWidth={1119}>
-                    <GridList cellHeight={216} cols={3} style={styles.gridList}>
+                <MediaQuery minWidth={600} maxWidth={1119}>
+                    <GridList cellHeight={230} cols={3} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>
-                <MediaQuery maxWidth={559}>
-                    <GridList cellHeight={180} cols={1} style={styles.gridList}>
+                <MediaQuery maxWidth={599}>
+                    <div style={{height: 8}}></div>
+                    <GridList cellHeight={200} cols={1} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>

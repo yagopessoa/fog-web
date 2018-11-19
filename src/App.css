@@ -1,3 +1,15 @@
+:root {
+  --dark-primary-color: #1E2264;
+  --primary-color: #244960;
+  --light-primary-color: #CFD8DC;
+  --text-primary-color: #FFFFFF;
+  --accent-color: #F1CD36;
+  --primary-text-color: #212121;
+  --secondary-text-color: #757575;
+  --divider-color: #BDBDBD;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
 .App {
   text-align: center;
   /* background-color: #F5F5F5; */
@@ -16,6 +28,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
   max-height: 720px;
+}
+
+.root-page{
+  width: 100vw;
+  padding-top: 64px;
 }
 
 .game-square{
@@ -37,10 +54,15 @@ h4 {
   padding: 8px;
 }
 
-.root-page{
+.sobre-page{
   width: 100vw;
   height: calc(100vh - 64px);
   overflow-y: auto;
+  background-color: var(--primary-color);
+}
+
+.areas-img{
+  width: 60%;
 }
 
 .sobre-page {
@@ -72,5 +94,23 @@ h4 {
   .area-container {
     flex-direction: column;
     width: 90vw;
+  }
+
+  .areas-img{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .root-page{
+    padding-top: 56px;
+  }
+
+  .sobre-page{
+    height: calc(100vh - 56px);
+  }
+
+  .areas-img{
+    width: 100%;
   }
 }
