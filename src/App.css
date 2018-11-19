@@ -37,8 +37,13 @@ h4 {
   padding: 8px;
 }
 
-.sobre-page {
+.root-page{
   width: 100vw;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.sobre-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,9 +65,12 @@ h4 {
     align-items: flex-start;
   }
 
+  .sobre-page{
+    text-align: center;
+  }
+
   .area-container {
     flex-direction: column;
     width: 90vw;
-    text-align: center;
   }
 }

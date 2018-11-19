@@ -5,10 +5,18 @@ import './App.css'
 import MediaQuery from 'react-responsive'
 
 import theme from './theme'
-import { MuiThemeProvider, Typography, IconButton } from '@material-ui/core'
+
+import { MuiThemeProvider } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
 
 import Menu from '@material-ui/icons/Menu'
 import Games from '@material-ui/icons/Games'
@@ -114,7 +122,59 @@ const Home = () =>
   </div>
 </MuiThemeProvider>
 
+const sideList = (
+  <div style={{width: 250}}>
+    <List>
+
+      <Link style={styles.link} to="/sobre">
+        <ListItem button >
+          <ListItemIcon><Info /></ListItemIcon>
+          <ListItemText primary={'Sobre'} />
+        </ListItem>
+      </Link>
+
+      <Link style={styles.link} to="/jogos">
+        <ListItem button >
+          <ListItemIcon><Games /></ListItemIcon>
+          <ListItemText primary={'Jogos'} />
+        </ListItem>
+      </Link>
+      
+      <Link style={styles.link} to="/eventos">
+        <ListItem button >
+          <ListItemIcon><Event /></ListItemIcon>
+          <ListItemText primary={'Eventos'} />
+        </ListItem>
+      </Link>
+      
+      <Link style={styles.link} to="/ptdc">
+        <ListItem button >
+          <ListItemIcon><Radio /></ListItemIcon>
+          <ListItemText primary={'PTDC'} />
+        </ListItem>
+      </Link>
+      
+      <Link style={styles.link} to="/psel">
+        <ListItem button >
+          <ListItemIcon><GroupAdd /></ListItemIcon>
+          <ListItemText primary={'Processo Seletivo'} />
+        </ListItem>
+      </Link>
+      
+    </List>
+  </div>
+)
 class App extends Component {
+
+  state = {
+    drawer: false,
+  }
+
+  toggleDrawer = (open) => () => {
+    this.setState({
+      drawer: open,
+    })
+  }
 
   render() {
     return (
@@ -173,13 +233,28 @@ class App extends Component {
                     </Typography>
                   </div>
                   <IconButton color="inherit">
-                    <Menu />
+                    <Menu onClick={this.toggleDrawer(true)} />
                   </IconButton>
                 </MediaQuery>
 
               </Toolbar>
             </AppBar>
           </div>
+
+          <SwipeableDrawer
+            open={this.state.drawer}
+            onClose={this.toggleDrawer(false)}
+            onOpen={this.toggleDrawer(true)}
+          >
+            <div
+              tabIndex={0}
+              role="button"
+              onClick={this.toggleDrawer(false)}
+              onKeyDown={this.toggleDrawer(false)}
+            >
+              {sideList}
+            </div>
+          </SwipeableDrawer>
 
           <Switch>
             <Route path="/" exact component={Home} />

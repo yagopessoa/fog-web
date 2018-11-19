@@ -65,9 +65,11 @@ export default class Sobre extends Component {
 
     render(){
         return(
-            <div className="sobre-page">
-                <h4>Conheça as diferentes áreas de atuação do FoG:</h4>
-                {this.renderAreas()}
+            <div className="root-page">
+                <div className="sobre-page">
+                    <h4>Conheça as diferentes áreas de atuação do FoG:</h4>
+                    {this.renderAreas()}
+                </div>
             </div>
         )
     }
