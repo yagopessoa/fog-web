@@ -22,7 +22,10 @@ const styles = {
     },
     gridList: {
         width: '100hh',
-        height: '90vh',
+        height: 'calc(100vh - 64px)',
+        justifyContent: 'center',
+        paddingLeft: 16,
+        paddingRight: 16,
     },
     icon: {
         color: '#FFF',
@@ -38,7 +41,7 @@ export default class Jogos extends Component {
 
     renderTile() {
         return this.state.tileData.map(tile => (tile.published && tile.cover_url &&
-            <GridListTile style={{ padding: 32 }} key={tile.title}>
+            <GridListTile className="game-square" style={{ margin: 32 }} key={tile.title}>
                 <img src={tile.cover_url} alt={tile.title} />
                 <GridListTileBar
                     title={tile.title}
@@ -55,7 +58,7 @@ export default class Jogos extends Component {
 
     renderTileSmall() {
         return this.state.tileData.map(tile => (tile.published && tile.cover_url &&
-            <GridListTile style={{ padding: 8 }} key={tile.title}>
+            <GridListTile className="game-square" style={{ margin: 8 }} key={tile.title}>
                 <img src={tile.cover_url} alt={tile.title} />
                 <GridListTileBar
                     title={tile.title}
@@ -97,20 +100,20 @@ export default class Jogos extends Component {
                 <CircularProgress />
             </div>
         )
-        return (     // TODO: https://github.com/Canner/react-loading-image
+        return (     // TODO (maybe): https://github.com/Canner/react-loading-image
             <div style={styles.root}>
                 <MediaQuery minWidth={1120}>
-                    <GridList cellHeight={340} cols={3} style={styles.gridList}>
+                    <GridList cellHeight={276} cols={4} style={styles.gridList}>
                         {this.renderTile()}
                     </GridList>
                 </MediaQuery>
                 <MediaQuery minWidth={560} maxWidth={1119}>
-                    <GridList cellHeight={280} cols={2} style={styles.gridList}>
+                    <GridList cellHeight={216} cols={3} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>
                 <MediaQuery maxWidth={559}>
-                    <GridList cellHeight={220} cols={1} style={styles.gridList}>
+                    <GridList cellHeight={180} cols={1} style={styles.gridList}>
                         {this.renderTileSmall()}
                     </GridList>
                 </MediaQuery>

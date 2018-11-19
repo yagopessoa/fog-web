@@ -18,6 +18,10 @@
   max-height: 720px;
 }
 
+.game-square{
+  box-shadow: 2px 2px 10px 2px grey;
+}
+
 .page-body {
   flex-grow: 1;
   display: flex;
