@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 export default class Ptdc extends Component {
     render(){
         return(
+<<<<<<< HEAD
             <div className="ptdc-page">
                 <MediaQuery minWidth={680}>
                     <p style={{fontSize: '2em'}}>QUINZENALMENTE ÀS SEGUNDAS | 21H</p>
@@ -19,6 +20,9 @@ export default class Ptdc extends Component {
                   Ver episódios
                 </Button>
             </div>
+=======
+            <h2>PTDC</h2>
+>>>>>>> 2aff48f6c72fed4da3edb5dd76d7873ab488e992
         )
     }
 }
